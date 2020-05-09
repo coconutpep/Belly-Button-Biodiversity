@@ -1,3 +1,7 @@
+body {
+    background-color: rgb(125, 218, 125)
+}
+
 .jumbotron {
     text-align: center;
     background-image: url(../images/background.jpg);
