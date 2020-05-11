@@ -2,6 +2,11 @@ body {
     background-color: rgb(125, 218, 125)
 }
 
+form {
+    background-color: rgb(176, 176, 206);
+    border: 1px solid black;
+}
+
 .jumbotron {
     text-align: center;
     background-image: url(../images/background.jpg);
