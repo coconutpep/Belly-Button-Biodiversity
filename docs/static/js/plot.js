@@ -56,8 +56,8 @@ const samples = d3.json("data/samples.json").then(function(data) {
         xaxis: {gridcolor: "black"},
         yaxis: {gridcolor: "black"},
         //Set plot's bacground to transparent
-        paper_bgcolor: "rgba(0,0,0,0)",
-        plot_bgcolor: "rgba(0,0,0,0)",
+        paper_bgcolor: "rgb(176, 176, 206)",
+        plot_bgcolor: "rgb(176, 176, 206)",
     };
     //Create initial plots
     Plotly.newPlot("plot1", dataBar, layout);
