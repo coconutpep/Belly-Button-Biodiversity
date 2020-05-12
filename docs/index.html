@@ -13,31 +13,31 @@
 
     <body>
         <div class="jumbotron">
-            <h1>Belly Button Biodiversity Dashboard</h1>
-            <p class=lead>Learn about the biodiversity living in your belly button!</p>
+            <div class="container" id="jumbotron-text">
+                <h1>Belly Button Biodiversity Dashboard</h1>
+                <p class=lead>Learn about the biodiversity living in your belly button!</p>
+            </div>
         </div>
         
         <div class="container-fluid" id="dashboard">
             <div class="row">
-                <div class="col-2"></div>
-                <div class="col-4 form-group">
+                <div class="col-12 col-md-4 form-group">
                     <form id="patient-selector">
                         <label for="patient">Patient:</label>
                         <select class="form-control" id="patient"></select>
                     </form>
                 </div>
-                <div class="col-2">
-                    <div class="card border-dark mb-3" style="width: 18rem;">
+                <div class="col-2" id="demo-card">
+                    <div class="card border-dark mb-3" style="width: 18rem;" id="demo">
                         <div class="card-header" style="background-color: rgb(176, 176, 206);">Demographic Info</div>
                         <div class="card-body">
                         </div>
                     </div>
                 </div>
-                <div class="col-2"></div>
             </div>
             <div class="row">
-                <div class="col-5" id="plot1"></div>
-                <div class="col-5" id="plot2"></div>
+                <div class="col-12 col-md-5" id="plot1"></div>
+                <div class="col-12 col-md-5" id="plot2"></div>
             </div>
             <div class="row">
                 <div class="col-6" id="plot3"></div>

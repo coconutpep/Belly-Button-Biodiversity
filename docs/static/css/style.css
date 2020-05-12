@@ -3,22 +3,46 @@ body {
 }
 
 .jumbotron {
-    text-align: center;
-    background-image: url(../images/background.jpg);
-    background-repeat: no-repeat;
+    position: relative;
+    background-image: url("../images/background-jumbo.jpg");
     background-size: cover;
+    background-repeat: none;
+    text-align: center;
     color: white;
     text-shadow: 2px 2px black;
+    margin-bottom:0;
+}
+
+.form-group {
+    margin-left: 15%;
+    margin-right: 60px;
+    padding:0;
+}
+
+#jumbotron-text {
+    background-color: rgba(196, 216, 194, 0.411);
+    border: 2px solid rgba(124, 129, 124, 0.685);
+    box-shadow: 2px 2px rgba(47, 53, 47, 0.89);
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 0;
+    padding-right:0;
 }
 
 #dashboard {
-    background-image: linear-gradient(rgb(125,218,125))
+    background-image: linear-gradient(rgb(75, 143, 75), rgb(125,218,125));
+    padding-top: 32px;
 }
 
 #patient-selector {
     background-color: rgb(176, 176, 206);
     border: 1px solid black;
     border-radius: .25rem;
+}
+
+#demo {
+    margin-left:0;
+    margin-right:auto;
 }
 
 #plot1 {
@@ -29,4 +53,24 @@ body {
 #plot2 {
     margin-left: 30px;
     margin-right: auto;
+}
+
+@media (max-width: 576px) {
+    .form-group, #plot1, #plot2 {
+        margin-right:0;
+        margin-left:0;
+    }
+
+    #demo-card, .js-plotly-plot {
+        padding-left:0;
+    }
+
+    #demo {
+        margin-left: 50%;
+        margin-right: auto;
+    }
+
+    #plot1 {
+        margin-bottom :8px;
+    }
 }
