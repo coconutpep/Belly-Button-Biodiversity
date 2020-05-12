@@ -45,13 +45,12 @@ const samples = d3.json("data/samples.json").then(function(data) {
     //Append information to Demographic Card
     //Select Card body
     const card = d3.select(".card-body");
-    console.log(meta[0]);
-    Object.entries(meta[0]).forEach(([key, value]) => card.append("p").attr("class", "card-text").text(`${key}: ${value}`));
+    Object.entries(meta[0]).forEach(([key, value]) => card.append("p").attr("class", "card-text").attr("id", `${key}`).text(`${key}: ${value}`));
     //Set seperate datas for easier plot placement
-    let dataBar = [traceBar];
-    let dataBubble = [traceBubble];
+    const dataBar = [traceBar];
+    const dataBubble = [traceBubble];
     //Set layout for charts all can use same layout
-    let layout = {
+    const layout = {
         title : "Bacteria Levels by Species",
         xaxis: {gridcolor: "black"},
         yaxis: {gridcolor: "black"},
@@ -62,32 +61,38 @@ const samples = d3.json("data/samples.json").then(function(data) {
     //Create initial plots
     Plotly.newPlot("plot1", dataBar, layout);
     Plotly.newPlot("plot2", dataBubble, layout);
-    //Switch function for dynamic plot control
-    switch(name) {
-        //Let first patient be default
-        default:
-            traceBar = {
-                x: samples[0].sample_values.reverse(),
-                y: samples[0].otu_ids.map(id => `OTU ${id}`).reverse(),
-                type: "bar",
-                text: samples[0].otu_labels,
-                orientation: "h",
-                marker: {
-                    line: {
-                        color: "black",
-                        width: 1
-                    }
-                }
-            };
-            traceBubble = {
-                x: samples[0].otu_ids,
-                y: samples[0].sample_values,
-                mode: "markers",
-                text: samples[0].otu_labels,
-                marker: {
-                    size: samples[0].sample_values,
-                    color: samples[0].otu_ids
-                }
-            };
-}
+
+    //Function to update Dashboard based on patient selection
+    function switchDashboard() {
+        //Grab input value
+        const input = select.property("value");
+        //Grab the index value for the desired patient
+        const index = names.findIndex(name => name == input);
+        //Reset trace values for Bar plot
+        let barx = samples[index].sample_values.reverse();
+        let bary = samples[index].otu_ids.map(id => `OTU ${id}`).reverse();
+        let bartext = samples[index].otu_labels;
+        //Reset trace values for Bubble plot
+        let bubblex = samples[index].otu_ids;
+        let bubbley = samples[index].sample_values;
+        let bubbletext = samples[index].otu_labels;
+        let bubblesize =  samples[index].sample_values;
+        let bubblecolor = samples[index].otu_ids;
+        //Restyle Bar plot
+        Plotly.restyle("plot1", "x", [barx]);
+        Plotly.restyle("plot1", "y", [bary]);
+        Plotly.restyle("plot1", "text", [bartext])
+        //Restyle Bubble Plot
+        Plotly.restyle("plot2", "x", [bubblex]);
+        Plotly.restyle("plot2", "y", [bubbley]);
+        Plotly.restyle("plot2", "text", [bubbletext]);
+        Plotly.restyle("plot2", "marker.size", [bubblesize]);
+        Plotly.restyle("plot2", "marker.color", [bubblecolor]);
+        //Change Demograpic Card
+        //Iterate through the patient meta object values and replace the card body text to new patient info
+        Object.entries(meta[index]).forEach(([key, value]) => d3.select(`#${key}`).text(`${key}: ${value}`));
+    }
+    
+    //Event handler
+    select.on("change", switchDashboard);
 });
