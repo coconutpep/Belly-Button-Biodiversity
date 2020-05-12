@@ -2,11 +2,6 @@ body {
     background-color: rgb(125, 218, 125)
 }
 
-form {
-    background-color: rgb(176, 176, 206);
-    border: 1px solid black;
-}
-
 .jumbotron {
     text-align: center;
     background-image: url(../images/background.jpg);
@@ -14,4 +9,14 @@ form {
     background-size: cover;
     color: white;
     text-shadow: 2px 2px black;
+}
+
+#dashboard {
+    background-image: linear-gradient(rgb(125,218,125))
+}
+
+#patient-selector {
+    background-color: rgb(176, 176, 206);
+    border: 1px solid black;
+    border-radius: .25rem;
 }
