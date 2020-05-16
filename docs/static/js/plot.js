@@ -58,7 +58,98 @@ const samples = d3.json("data/samples.json").then(function(data) {
             shape: "angular",
             bordercolor: "black"
         },
-        axis: {showticklabels: false,}
+        steps: [
+            {
+                color: "green",
+                line: {
+                    color: "black",
+                    width: 2
+                },
+                thickness: .1,
+                name: "0"
+            },
+            {
+                color: "orange",
+                line: {
+                    color: "black",
+                    width: 2
+                },
+                thickness: .1,
+                name: "1"
+            },
+            {
+                color: "purple",
+                line: {
+                    color: "black",
+                    width: 2
+                },
+                thickness: .1,
+                name: "2"
+            },
+            {
+                color: "red",
+                line: {
+                    color: "black",
+                    width: 2
+                },
+                thickness: .1,
+                name: "3"
+            },
+            {
+                color: "yellow",
+                line: {
+                    color: "black",
+                    width: 2
+                },
+                thickness: .1,
+                name: "4"
+            },
+            {
+                color: "pink",
+                line: {
+                    color: "black",
+                    width: 2
+                },
+                thickness: .1,
+                name: "5"
+            },
+            {
+                color: "brown",
+                line: {
+                    color: "black",
+                    width: 2
+                },
+                thickness: .1,
+                name: "6"
+            },
+            {
+                color: "grey",
+                line: {
+                    color: "black",
+                    width: 2
+                },
+                thickness: .1,
+                name: "7"
+            },
+            {
+                color: "maroon",
+                line: {
+                    color: "black",
+                    width: 2
+                },
+                thickness: .1,
+                name: "8"
+            },
+            {
+                color: "coral",
+                line: {
+                    color: "black",
+                    width: 2
+                },
+                thickness: .1,
+                name: "9"
+            },
+        ]
     };
     //Set gauge layout variables
     let degrees = 115;
