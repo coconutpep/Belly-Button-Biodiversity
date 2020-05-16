@@ -49,7 +49,6 @@ const samples = d3.json("data/samples.json").then(function(data) {
     //Set seperate datas for easier plot placement
     const dataBar = [traceBar];
     const dataBubble = [traceBubble];
-    const dataGauge = [traceGauge];
     //Set layout for charts all can use same layout
     const layout = {
         title : "Bacteria Levels by Species",
@@ -62,7 +61,6 @@ const samples = d3.json("data/samples.json").then(function(data) {
     //Create initial plots
     Plotly.newPlot("plot1", dataBar, layout);
     Plotly.newPlot("plot2", dataBubble, layout);
-    Plotly.newPlot("plot3", dataGauge, layoutGauge);
 
     //Function to update Dashboard based on patient selection
     function switchDashboard() {
