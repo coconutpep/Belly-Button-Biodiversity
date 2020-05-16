@@ -42,6 +42,34 @@ const samples = d3.json("data/samples.json").then(function(data) {
             }
         }
     };
+    //Set trace for Gauge plot
+    let traceGauge = {
+        type: "indicator",
+        mode: "gauge",
+        value: meta[0].wfreq,
+        gauge: {
+            bar: {
+                color: "blue",
+                line: {
+                    color: "black",
+                    width: 2
+                }
+            },
+            shape: "angular",
+            bordercolor: "black"
+        },
+        axis: {showticklabels: false,}
+    };
+    //Set gauge layout variables
+    let degrees = 115;
+    let radius = .6;
+    const radians = degrees * Math.PI / 180;
+    const x = -1 * radius * Math.cos(radians);
+    const y = radius * Math.sin(radians);
+    //Set gauge layout
+    let layoutGauge = {
+        title: "Belly Button Scrubs Per Week"
+    };
     //Append information to Demographic Card
     //Select Card body
     const card = d3.select(".card-body");
@@ -49,6 +77,7 @@ const samples = d3.json("data/samples.json").then(function(data) {
     //Set seperate datas for easier plot placement
     const dataBar = [traceBar];
     const dataBubble = [traceBubble];
+    const dataGauge = [traceGauge];
     //Set layout for charts all can use same layout
     const layout = {
         title : "Bacteria Levels by Species",
@@ -61,6 +90,7 @@ const samples = d3.json("data/samples.json").then(function(data) {
     //Create initial plots
     Plotly.newPlot("plot1", dataBar, layout);
     Plotly.newPlot("plot2", dataBubble, layout);
+    Plotly.newPlot("plot3", dataGauge, layoutGauge);
 
     //Function to update Dashboard based on patient selection
     function switchDashboard() {
@@ -92,7 +122,7 @@ const samples = d3.json("data/samples.json").then(function(data) {
         //Iterate through the patient meta object values and replace the card body text to new patient info
         Object.entries(meta[index]).forEach(([key, value]) => d3.select(`#${key}`).text(`${key}: ${value}`));
     }
-    
+
     //Event handler
     select.on("change", switchDashboard);
 });
